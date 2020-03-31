@@ -2,13 +2,15 @@ import React, {useContext, useMemo, useState} from "react";
 import CountContext from "./CountContext";
 
 const Component2 = () => {
-  const [localCount, setLocalCount] = useState(0)
 
+  //local state
+  const [localCount, setLocalCount] = useState(0)
   //global state
   let context = useContext(CountContext);
-  //local state
+  console.log('Component 2 rendered', context)
+
   return useMemo(() => {
-    console.log('component 2 ', context)
+    console.log('use memo detected change')
     return <>
       <button onClick={() => {
         context.dispatch(2); // call global dispatch but it wont update anything
